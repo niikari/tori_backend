@@ -3,10 +3,13 @@ package com.tehtava.openshift.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +27,11 @@ public class Company extends AbstractPersistable<Long> {
 	
 	private String webUrl;
 
-	@OneToMany(mappedBy="company")
+	@OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<UserCompany> userCompanies = new ArrayList<>();
 	
-	@OneToMany(mappedBy="company")
+	@OneToMany(mappedBy="company", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Office> offices = new ArrayList<>();
 }

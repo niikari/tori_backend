@@ -3,6 +3,7 @@ package com.tehtava.openshift.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -27,6 +28,9 @@ public class User extends AbstractPersistable<Long> {
 	
 	private String email;
 	
-	@OneToMany(mappedBy="user")
+	private String role;
+	
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<UserCompany> userCompanies = new ArrayList<>();
 }

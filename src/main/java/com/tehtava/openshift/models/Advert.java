@@ -35,5 +35,7 @@ public class Advert extends AbstractPersistable<Long> {
 	private Type type;
 	
 	private String photoUrl;
+	
+	private boolean active = true;
 
 }
