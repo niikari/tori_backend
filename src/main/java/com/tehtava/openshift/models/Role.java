@@ -3,14 +3,11 @@ package com.tehtava.openshift.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,19 +17,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="usertable")
-public class User extends AbstractPersistable<Long> {
-
-	private String username;
+public class Role extends AbstractPersistable<Long> {
 	
-	private String email;
-	
+	@Column(nullable=false)
 	private String role;
 	
-	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<UserCompany> userCompanies = new ArrayList<>();
-	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="role")
 	private List<UserRole> userRoles = new ArrayList<>();
+
 }
