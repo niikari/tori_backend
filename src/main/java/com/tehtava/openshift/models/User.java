@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -26,7 +27,6 @@ public class User extends AbstractPersistable<Long> {
 	
 	private String email;
 	
-	@ManyToMany
-	@JsonIgnore
-	private List<Company> companies = new ArrayList<>();
+	@OneToMany(mappedBy="user")
+	private List<UserCompany> userCompanies = new ArrayList<>();
 }

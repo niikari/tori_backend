@@ -3,10 +3,12 @@ package com.tehtava.openshift.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,17 +18,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Company extends AbstractPersistable<Long> {
+public class Type extends AbstractPersistable<Long> {
 	
-	private String yNumber;
-		
-	private String nimi;
+	@Column(nullable=false)
+	private String type;
 	
-	private String webUrl;
+	@OneToMany(mappedBy="type")
+	private List<Advert> adverts = new ArrayList<>();
 
-	@OneToMany(mappedBy="company")
-	private List<UserCompany> userCompanies = new ArrayList<>();
-	
-	@OneToMany(mappedBy="company")
-	private List<Office> offices = new ArrayList<>();
 }
