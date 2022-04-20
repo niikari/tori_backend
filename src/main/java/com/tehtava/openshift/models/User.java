@@ -24,13 +24,9 @@ import lombok.NoArgsConstructor;
 @Table(name="usertable")
 public class User extends AbstractPersistable<Long> {
 
-	private String username;
-	
-	private String email;
-	
-	private String role;
+	private String username, phoneNumber, street, postCode, city, email;
 	
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<UserCompany> userCompanies = new ArrayList<>();
+	private List<Advert> adverts = new ArrayList<>();
+	
 }

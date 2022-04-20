@@ -29,13 +29,13 @@ public class Advert extends AbstractPersistable<Long> {
 	private Timestamp timestamp;
 	
 	@ManyToOne
-	private Office office;
-	
-	@ManyToOne
 	private Type type;
 	
 	private String photoUrl;
 	
 	private boolean active = true;
+	
+	@ManyToOne
+	private User user;
 
 }
