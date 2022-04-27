@@ -23,8 +23,6 @@ import lombok.NoArgsConstructor;
 @Table(name="usertable")
 public class User extends AbstractPersistable<Long> {
 
-	private String username;
-	
 	private String email;
 	
 	@OneToMany(mappedBy="user")

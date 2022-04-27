@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-CMD 'ls -la'
-
 RUN mvn clean package
 
 FROM openjdk:latest
